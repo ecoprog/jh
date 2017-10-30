@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "wishlist"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "hidden",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20171030200533",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "wishlist",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
