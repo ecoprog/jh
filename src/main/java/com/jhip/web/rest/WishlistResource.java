@@ -84,8 +84,9 @@ public class WishlistResource {
     @GetMapping("/wishlists")
     @Timed
     public List<Wishlist> getAllWishlists() {
+        // Added something
         log.debug("REST request to get all Wishlists");
-        return wishlistRepository.findAll();
+        return wishlistRepository.findByUserIsCurrentUser();
         }
 
     /**
