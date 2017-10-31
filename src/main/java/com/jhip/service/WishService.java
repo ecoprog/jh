@@ -1,11 +1,18 @@
 package com.jhip.service;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
 import com.jhip.domain.Wish;
+import com.jhip.domain.Wishlist;
 import com.jhip.repository.WishRepository;
+import com.jhip.repository.WishlistRepository;
+import com.jhip.security.SecurityUtils;
+import org.aspectj.lang.annotation.DeclareAnnotation;
+import org.hibernate.service.spi.InjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +32,8 @@ public class WishService {
         this.wishRepository = wishRepository;
     }
 
+    @JacksonInject
+    private WishlistRepository wishlistRepository;
     /**
      * Save a wish.
      *
@@ -33,6 +42,10 @@ public class WishService {
      */
     public Wish save(Wish wish) {
         log.debug("Request to save Wish : {}", wish);
+        Wishlist wishlist = wishlistRepository.getOne(wish.getWishlist().getId());
+        if(!wishlist.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin())){
+            throw new AccessDeniedException("You should not do this");
+        }
         return wishRepository.save(wish);
     }
 
