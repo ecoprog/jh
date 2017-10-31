@@ -1,6 +1,6 @@
 {
     "jhipApp": {
-        "wishlist" : {
+        "wishlist": {
             "home": {
                 "title": "Wishlists",
                 "createLabel": "Wishlist erstellen",

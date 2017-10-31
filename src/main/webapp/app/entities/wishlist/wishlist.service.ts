@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
+import {JhiDateUtils} from 'ng-jhipster';
 
-import { Wishlist } from './wishlist.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import {Wishlist} from './wishlist.model';
+import {ResponseWrapper, createRequestOption} from '../../shared';
 
 @Injectable()
 export class WishlistService {
 
     private resourceUrl = SERVER_API_URL + 'api/wishlists';
 
-    constructor(private http: Http, private dateUtils: JhiDateUtils) { }
+    constructor(private http: Http, private dateUtils: JhiDateUtils) {
+    }
 
     create(wishlist: Wishlist): Observable<Wishlist> {
         const copy = this.convert(wishlist);

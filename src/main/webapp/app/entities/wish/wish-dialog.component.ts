@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Response } from '@angular/http';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Response} from '@angular/http';
 
-import { Observable } from 'rxjs/Rx';
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import {Observable} from 'rxjs/Rx';
+import {NgbActiveModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager, JhiAlertService} from 'ng-jhipster';
 
-import { Wish } from './wish.model';
-import { WishPopupService } from './wish-popup.service';
-import { WishService } from './wish.service';
-import { Wishlist, WishlistService } from '../wishlist';
-import { ResponseWrapper } from '../../shared';
+import {Wish} from './wish.model';
+import {WishPopupService} from './wish-popup.service';
+import {WishService} from './wish.service';
+import {Wishlist, WishlistService} from '../wishlist';
+import {ResponseWrapper} from '../../shared';
 
 @Component({
     selector: 'jhi-wish-dialog',
@@ -23,19 +23,19 @@ export class WishDialogComponent implements OnInit {
 
     wishlists: Wishlist[];
 
-    constructor(
-        public activeModal: NgbActiveModal,
-        private jhiAlertService: JhiAlertService,
-        private wishService: WishService,
-        private wishlistService: WishlistService,
-        private eventManager: JhiEventManager
-    ) {
+    constructor(public activeModal: NgbActiveModal,
+                private jhiAlertService: JhiAlertService,
+                private wishService: WishService,
+                private wishlistService: WishlistService,
+                private eventManager: JhiEventManager) {
     }
 
     ngOnInit() {
         this.isSaving = false;
         this.wishlistService.query()
-            .subscribe((res: ResponseWrapper) => { this.wishlists = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+            .subscribe((res: ResponseWrapper) => {
+                this.wishlists = res.json;
+            }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -59,7 +59,7 @@ export class WishDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: Wish) {
-        this.eventManager.broadcast({ name: 'wishListModification', content: 'OK'});
+        this.eventManager.broadcast({name: 'wishListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -85,14 +85,13 @@ export class WishPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
-    constructor(
-        private route: ActivatedRoute,
-        private wishPopupService: WishPopupService
-    ) {}
+    constructor(private route: ActivatedRoute,
+                private wishPopupService: WishPopupService) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.wishPopupService
                     .open(WishDialogComponent as Component, params['id']);
             } else {

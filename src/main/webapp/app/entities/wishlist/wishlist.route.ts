@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate} from '@angular/router';
 
-import { UserRouteAccessService } from '../../shared';
-import { JhiPaginationUtil } from 'ng-jhipster';
+import {UserRouteAccessService} from '../../shared';
+import {JhiPaginationUtil} from 'ng-jhipster';
 
-import { WishlistComponent } from './wishlist.component';
-import { WishlistDetailComponent } from './wishlist-detail.component';
-import { WishlistPopupComponent } from './wishlist-dialog.component';
-import { WishlistDeletePopupComponent } from './wishlist-delete-dialog.component';
+import {WishlistComponent} from './wishlist.component';
+import {WishlistDetailComponent} from './wishlist-detail.component';
+import {WishlistPopupComponent} from './wishlist-dialog.component';
+import {WishlistDeletePopupComponent} from './wishlist-delete-dialog.component';
 
 export const wishlistRoute: Routes = [
     {

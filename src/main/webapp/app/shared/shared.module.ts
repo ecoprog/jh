@@ -1,5 +1,5 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {DatePipe} from '@angular/common';
 
 import {
     JhipSharedLibsModule,
@@ -46,4 +46,5 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class JhipSharedModule {}
+export class JhipSharedModule {
+}

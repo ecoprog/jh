@@ -1,9 +1,10 @@
 <div>
     <h2>
         <span jhiTranslate="jhipApp.wishlist.home.title">Wishlists</span>
-        <button class="btn btn-primary float-right jh-create-entity create-wishlist" [routerLink]="['/', { outlets: { popup: ['wishlist-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-wishlist"
+                [routerLink]="['/', { outlets: { popup: ['wishlist-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="jhipApp.wishlist.home.createLabel">
+            <span jhiTranslate="jhipApp.wishlist.home.createLabel">
             Create new Wishlist
             </span>
         </button>
@@ -16,12 +17,12 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="jhipApp.wishlist.name">Name</span></th>
-            <th><span jhiTranslate="jhipApp.wishlist.creationDate">Creation Date</span></th>
-            <th><span jhiTranslate="jhipApp.wishlist.hidden">Hidden</span></th>
-            <th><span jhiTranslate="jhipApp.wishlist.user">User</span></th>
-            <th></th>
+                <th><span jhiTranslate="global.field.id">ID</span></th>
+                <th><span jhiTranslate="jhipApp.wishlist.name">Name</span></th>
+                <th><span jhiTranslate="jhipApp.wishlist.creationDate">Creation Date</span></th>
+                <th><span jhiTranslate="jhipApp.wishlist.hidden">Hidden</span></th>
+                <th><span jhiTranslate="jhipApp.wishlist.user">User</span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>

@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs/Rx';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { Wishlist } from './wishlist.model';
-import { WishlistService } from './wishlist.service';
+import {Wishlist} from './wishlist.model';
+import {WishlistService} from './wishlist.service';
 
 @Component({
     selector: 'jhi-wishlist-detail',
@@ -16,11 +16,9 @@ export class WishlistDetailComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
-    constructor(
-        private eventManager: JhiEventManager,
-        private wishlistService: WishlistService,
-        private route: ActivatedRoute
-    ) {
+    constructor(private eventManager: JhiEventManager,
+                private wishlistService: WishlistService,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -35,6 +33,7 @@ export class WishlistDetailComponent implements OnInit, OnDestroy {
             this.wishlist = wishlist;
         });
     }
+
     previousState() {
         window.history.back();
     }

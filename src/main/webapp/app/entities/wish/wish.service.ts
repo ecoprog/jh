@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { SERVER_API_URL } from '../../app.constants';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {SERVER_API_URL} from '../../app.constants';
 
-import { Wish } from './wish.model';
-import { ResponseWrapper, createRequestOption } from '../../shared';
+import {Wish} from './wish.model';
+import {ResponseWrapper, createRequestOption} from '../../shared';
 
 @Injectable()
 export class WishService {
 
     private resourceUrl = SERVER_API_URL + 'api/wishes';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+    }
 
     create(wish: Wish): Observable<Wish> {
         const copy = this.convert(wish);

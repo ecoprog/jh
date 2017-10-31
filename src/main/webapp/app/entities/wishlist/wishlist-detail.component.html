@@ -1,4 +1,3 @@
-
 <div *ngIf="wishlist">
     <h2><span jhiTranslate="jhipApp.wishlist.detail.title">Wishlist</span> {{wishlist.id}}</h2>
     <hr>
@@ -8,17 +7,10 @@
         <dd>
             <span>{{wishlist.name}}</span>
         </dd>
-        <dt><span jhiTranslate="jhipApp.wishlist.creationDate">Creation Date</span></dt>
-        <dd>
-            <span>{{wishlist.creationDate | date:'mediumDate'}}</span>
-        </dd>
+
         <dt><span jhiTranslate="jhipApp.wishlist.hidden">Hidden</span></dt>
         <dd>
             <span>{{wishlist.hidden}}</span>
-        </dd>
-        <dt><span jhiTranslate="jhipApp.wishlist.user">User</span></dt>
-        <dd>
-            {{wishlist.user?.login}}
         </dd>
     </dl>
 

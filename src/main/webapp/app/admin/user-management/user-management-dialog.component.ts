@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {NgbActiveModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { UserModalService } from './user-modal.service';
-import { JhiLanguageHelper, User, UserService } from '../../shared';
+import {UserModalService} from './user-modal.service';
+import {JhiLanguageHelper, User, UserService} from '../../shared';
 
 @Component({
     selector: 'jhi-user-mgmt-dialog',
@@ -18,12 +18,11 @@ export class UserMgmtDialogComponent implements OnInit {
     authorities: any[];
     isSaving: Boolean;
 
-    constructor(
-        public activeModal: NgbActiveModal,
-        private languageHelper: JhiLanguageHelper,
-        private userService: UserService,
-        private eventManager: JhiEventManager
-    ) {}
+    constructor(public activeModal: NgbActiveModal,
+                private languageHelper: JhiLanguageHelper,
+                private userService: UserService,
+                private eventManager: JhiEventManager) {
+    }
 
     ngOnInit() {
         this.isSaving = false;
@@ -50,7 +49,7 @@ export class UserMgmtDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result) {
-        this.eventManager.broadcast({ name: 'userListModification', content: 'OK' });
+        this.eventManager.broadcast({name: 'userListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -69,14 +68,13 @@ export class UserDialogComponent implements OnInit, OnDestroy {
     modalRef: NgbModalRef;
     routeSub: any;
 
-    constructor(
-        private route: ActivatedRoute,
-        private userModalService: UserModalService
-    ) {}
+    constructor(private route: ActivatedRoute,
+                private userModalService: UserModalService) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['login'] ) {
+            if (params['login']) {
                 this.modalRef = this.userModalService.open(UserMgmtDialogComponent as Component, params['login']);
             } else {
                 this.modalRef = this.userModalService.open(UserMgmtDialogComponent as Component);

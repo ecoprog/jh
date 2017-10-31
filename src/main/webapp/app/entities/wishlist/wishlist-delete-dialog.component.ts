@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {NgbActiveModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { Wishlist } from './wishlist.model';
-import { WishlistPopupService } from './wishlist-popup.service';
-import { WishlistService } from './wishlist.service';
+import {Wishlist} from './wishlist.model';
+import {WishlistPopupService} from './wishlist-popup.service';
+import {WishlistService} from './wishlist.service';
 
 @Component({
     selector: 'jhi-wishlist-delete-dialog',
@@ -16,11 +16,9 @@ export class WishlistDeleteDialogComponent {
 
     wishlist: Wishlist;
 
-    constructor(
-        private wishlistService: WishlistService,
-        public activeModal: NgbActiveModal,
-        private eventManager: JhiEventManager
-    ) {
+    constructor(private wishlistService: WishlistService,
+                public activeModal: NgbActiveModal,
+                private eventManager: JhiEventManager) {
     }
 
     clear() {
@@ -46,10 +44,9 @@ export class WishlistDeletePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
-    constructor(
-        private route: ActivatedRoute,
-        private wishlistPopupService: WishlistPopupService
-    ) {}
+    constructor(private route: ActivatedRoute,
+                private wishlistPopupService: WishlistPopupService) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {

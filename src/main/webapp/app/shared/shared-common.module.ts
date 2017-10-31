@@ -1,5 +1,5 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import {NgModule, LOCALE_ID} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 import {
     JhipSharedLibsModule,
@@ -33,4 +33,5 @@ import {
         JhiAlertErrorComponent
     ]
 })
-export class JhipSharedCommonModule {}
+export class JhipSharedCommonModule {
+}

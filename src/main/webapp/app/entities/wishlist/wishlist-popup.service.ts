@@ -1,19 +1,16 @@
-import { Injectable, Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Wishlist } from './wishlist.model';
-import { WishlistService } from './wishlist.service';
+import {Injectable, Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {Wishlist} from './wishlist.model';
+import {WishlistService} from './wishlist.service';
 
 @Injectable()
 export class WishlistPopupService {
     private ngbModalRef: NgbModalRef;
 
-    constructor(
-        private modalService: NgbModal,
-        private router: Router,
-        private wishlistService: WishlistService
-
-    ) {
+    constructor(private modalService: NgbModal,
+                private router: Router,
+                private wishlistService: WishlistService) {
         this.ngbModalRef = null;
     }
 
@@ -47,13 +44,13 @@ export class WishlistPopupService {
     }
 
     wishlistModalRef(component: Component, wishlist: Wishlist): NgbModalRef {
-        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(component, {size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.wishlist = wishlist;
         modalRef.result.then((result) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true});
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true});
             this.ngbModalRef = null;
         });
         return modalRef;

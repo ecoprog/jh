@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes, CanActivate} from '@angular/router';
 
-import { UserRouteAccessService } from '../../shared';
-import { JhiPaginationUtil } from 'ng-jhipster';
+import {UserRouteAccessService} from '../../shared';
+import {JhiPaginationUtil} from 'ng-jhipster';
 
-import { WishComponent } from './wish.component';
-import { WishDetailComponent } from './wish-detail.component';
-import { WishPopupComponent } from './wish-dialog.component';
-import { WishDeletePopupComponent } from './wish-delete-dialog.component';
+import {WishComponent} from './wish.component';
+import {WishDetailComponent} from './wish-detail.component';
+import {WishPopupComponent} from './wish-dialog.component';
+import {WishDeletePopupComponent} from './wish-delete-dialog.component';
 
 @Injectable()
 export class WishResolvePagingParams implements Resolve<any> {
 
-    constructor(private paginationUtil: JhiPaginationUtil) {}
+    constructor(private paginationUtil: JhiPaginationUtil) {
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const page = route.queryParams['page'] ? route.queryParams['page'] : '1';
@@ -21,7 +22,7 @@ export class WishResolvePagingParams implements Resolve<any> {
             page: this.paginationUtil.parsePage(page),
             predicate: this.paginationUtil.parsePredicate(sort),
             ascending: this.paginationUtil.parseAscending(sort)
-      };
+        };
     }
 }
 

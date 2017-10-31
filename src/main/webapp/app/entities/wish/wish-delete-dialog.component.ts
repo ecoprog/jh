@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import {NgbActiveModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {JhiEventManager} from 'ng-jhipster';
 
-import { Wish } from './wish.model';
-import { WishPopupService } from './wish-popup.service';
-import { WishService } from './wish.service';
+import {Wish} from './wish.model';
+import {WishPopupService} from './wish-popup.service';
+import {WishService} from './wish.service';
 
 @Component({
     selector: 'jhi-wish-delete-dialog',
@@ -16,11 +16,9 @@ export class WishDeleteDialogComponent {
 
     wish: Wish;
 
-    constructor(
-        private wishService: WishService,
-        public activeModal: NgbActiveModal,
-        private eventManager: JhiEventManager
-    ) {
+    constructor(private wishService: WishService,
+                public activeModal: NgbActiveModal,
+                private eventManager: JhiEventManager) {
     }
 
     clear() {
@@ -46,10 +44,9 @@ export class WishDeletePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
-    constructor(
-        private route: ActivatedRoute,
-        private wishPopupService: WishPopupService
-    ) {}
+    constructor(private route: ActivatedRoute,
+                private wishPopupService: WishPopupService) {
+    }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {

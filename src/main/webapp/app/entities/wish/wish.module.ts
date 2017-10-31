@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { JhipSharedModule } from '../../shared';
+import {JhipSharedModule} from '../../shared';
 import {
     WishService,
     WishPopupService,
@@ -24,7 +24,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         JhipSharedModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        RouterModule.forRoot(ENTITY_STATES, {useHash: true})
     ],
     declarations: [
         WishComponent,
@@ -48,4 +48,5 @@ const ENTITY_STATES = [
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class JhipWishModule {}
+export class JhipWishModule {
+}

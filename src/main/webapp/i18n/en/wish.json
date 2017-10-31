@@ -1,6 +1,6 @@
 {
     "jhipApp": {
-        "wish" : {
+        "wish": {
             "home": {
                 "title": "Wishes",
                 "createLabel": "Create a new Wish",
