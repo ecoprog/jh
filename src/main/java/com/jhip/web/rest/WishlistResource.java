@@ -1,11 +1,15 @@
 package com.jhip.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.jhip.domain.User;
 import com.jhip.domain.Wishlist;
 
+import com.jhip.repository.UserRepository;
 import com.jhip.repository.WishlistRepository;
+import com.jhip.service.UserService;
 import com.jhip.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.hibernate.service.spi.InjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +35,12 @@ public class WishlistResource {
 
     private final WishlistRepository wishlistRepository;
 
-    public WishlistResource(WishlistRepository wishlistRepository) {
+    private final UserService userService;
+
+    public WishlistResource(WishlistRepository wishlistRepository, UserService userService) {
+
         this.wishlistRepository = wishlistRepository;
+        this.userService = userService;
     }
 
     /**
@@ -48,7 +57,10 @@ public class WishlistResource {
         if (wishlist.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new wishlist cannot already have an ID")).body(null);
         }
-        Wishlist result = wishlistRepository.save(wishlist);
+        // Added something
+        Wishlist result = wishlistRepository.save(wishlist.
+            user(userService.getUserWithAuthorities()).
+            creationDate(LocalDate.now()));
         return ResponseEntity.created(new URI("/api/wishlists/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

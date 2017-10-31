@@ -27,13 +27,13 @@ public class WishService {
     private final Logger log = LoggerFactory.getLogger(WishService.class);
 
     private final WishRepository wishRepository;
+    private final WishlistRepository wishlistRepository;
 
-    public WishService(WishRepository wishRepository) {
+    public WishService(WishRepository wishRepository, WishlistRepository wishlistRepository) {
         this.wishRepository = wishRepository;
+        this.wishlistRepository = wishlistRepository;
     }
 
-    @JacksonInject
-    private WishlistRepository wishlistRepository;
     /**
      * Save a wish.
      *
@@ -58,7 +58,8 @@ public class WishService {
     @Transactional(readOnly = true)
     public Page<Wish> findAll(Pageable pageable) {
         log.debug("Request to get all Wishes");
-        return wishRepository.findAll(pageable);
+        Page<Wish> result = wishRepository.findByWishlistUserLogin(SecurityUtils.getCurrentUserLogin(), pageable);
+        return result;
     }
 
     /**

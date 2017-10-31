@@ -4,6 +4,7 @@ import com.jhip.JhipApp;
 
 import com.jhip.domain.Wishlist;
 import com.jhip.repository.WishlistRepository;
+import com.jhip.service.UserService;
 import com.jhip.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -52,6 +53,9 @@ public class WishlistResourceIntTest {
     private WishlistRepository wishlistRepository;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -70,7 +74,7 @@ public class WishlistResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final WishlistResource wishlistResource = new WishlistResource(wishlistRepository);
+        final WishlistResource wishlistResource = new WishlistResource(wishlistRepository, userService);
         this.restWishlistMockMvc = MockMvcBuilders.standaloneSetup(wishlistResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
